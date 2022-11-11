@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.7.10"
+    `maven-publish`
 }
 
 group = "org.atlasin"
@@ -16,10 +17,21 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("jitpack") {
+            groupId = "cop.github.Atlas-Initiative"
+            artifactId = "Inspekt"
+            version = rootProject.version.toString()
+
+            from(components["java"])
+        }
+    }
+}
 tasks.test {
     useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }
