@@ -13,15 +13,15 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     testImplementation(kotlin("test"))
 }
 
 publishing {
     publications {
         create<MavenPublication>("jitpack") {
-            groupId = "cop.github.Atlas-Initiative"
-            artifactId = "Inspekt"
+            groupId = "com.github.Atlas-Initiative"
+            artifactId = "Alcove"
             version = rootProject.version.toString()
 
             from(components["java"])
